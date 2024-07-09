@@ -125,7 +125,8 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
 
     if (num2 == 0) {
-        return "undefined"; //maybe just put zero here
+        return 0; //maybe just put zero here
+        alert("Bruh");
     }
 
     return num1 / num2;
