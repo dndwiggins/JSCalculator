@@ -29,10 +29,10 @@ for (let i = 0; i < numBtns.length; i++) {
 
     const numBtn = numBtns[i];
 
-
     numBtn.addEventListener("click", function (e) {
 
         var target = e.target;
+
 
 
         if (operateBool == true) {
@@ -69,6 +69,7 @@ for (let i = 0; i < operatorBtns.length; i++) {
     operatorBtn.addEventListener("click", function (e) {
 
         var target = e.target;
+
 
 
         if (operateBool == true && stringTotal2 !== "") { //operate bool already been clicked
@@ -125,8 +126,9 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
 
     if (num2 == 0) {
+        alert("Caught you tryna break my app >:D");
         return 0; //maybe just put zero here
-        alert("Bruh");
+
     }
 
     return num1 / num2;

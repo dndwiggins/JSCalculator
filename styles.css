@@ -1,6 +1,19 @@
+main {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 95vh;
+    height: 100vh;
+    align-self: flex-start;
+
+}
+
+
+
+
 .container {
     display: flex;
-    flex: auto;
     flex-direction: column;
     justify-content: center;
     width: 500px;
