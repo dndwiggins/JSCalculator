@@ -60,11 +60,7 @@
     border-color: black;
 }
 
-#add,
-#subtract,
-#multiply,
-#divide,
-#equal {
+#operator {
     display: flex;
     flex: auto;
     justify-content: center;
