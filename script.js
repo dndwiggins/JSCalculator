@@ -39,15 +39,6 @@ for (let i = 0; i < numBtns.length; i++) {
             return;
         }
 
-        if (stringTotal1 != "") { //if its not empty, operation already occured
-
-            var target = e.target;
-
-            stringTotal2 += target.innerHTML;
-
-            displayNum.innerHTML = stringTotal2;
-
-        }
 
 
         var target = e.target;
@@ -73,20 +64,20 @@ for (let i = 0; i < operatorBtns.length; i++) {
 
     operatorBtn.addEventListener("click", function (e) {
 
-        var target = e.target;
 
-        operator = target.innerHTML;
+        if (operateBool == false) {
+            var target = e.target;
+
+            operator = target.innerHTML;
+        }
 
         if (operateBool == true) { //operate bool already been clicked
-
 
             stringTotal1 = operate(operator, Number(stringTotal1), Number(stringTotal2));
 
             stringTotal2 = "";
 
             displayNum.innerHTML = stringTotal1;
-
-            stringTotal1 = stringTotal1.toString;
 
             operateBool = false;
 
@@ -139,7 +130,7 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
 
     if (num2 == 0) {
-        return "undefined";
+        return "undefined"; //maybe just put zero here
     }
 
     return num1 / num2;
