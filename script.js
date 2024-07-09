@@ -8,7 +8,7 @@ let stringTotal2 = "";
 
 let number1 = 0;
 
-let operator = "+";
+let operator = "";
 
 let number2 = 0;
 
@@ -16,8 +16,13 @@ let operateBool = false; //operate bool has not been clicked
 
 
 
-
 const numBtns = document.querySelectorAll("#num");
+
+const clear = document.querySelector("#clear");
+
+clear.addEventListener('click', function () {
+    window.location.reload();
+});
 
 
 for (let i = 0; i < numBtns.length; i++) {
@@ -27,10 +32,12 @@ for (let i = 0; i < numBtns.length; i++) {
 
     numBtn.addEventListener("click", function (e) {
 
+        var target = e.target;
+
 
         if (operateBool == true) {
 
-            var target = e.target;
+
 
             stringTotal2 += target.innerHTML;
 
@@ -39,9 +46,6 @@ for (let i = 0; i < numBtns.length; i++) {
             return;
         }
 
-
-
-        var target = e.target;
 
         stringTotal1 += target.innerHTML;
 
@@ -64,14 +68,11 @@ for (let i = 0; i < operatorBtns.length; i++) {
 
     operatorBtn.addEventListener("click", function (e) {
 
+        var target = e.target;
 
-        if (operateBool == false) {
-            var target = e.target;
 
-            operator = target.innerHTML;
-        }
+        if (operateBool == true && stringTotal2 !== "") { //operate bool already been clicked
 
-        if (operateBool == true) { //operate bool already been clicked
 
             stringTotal1 = operate(operator, Number(stringTotal1), Number(stringTotal2));
 
@@ -79,31 +80,25 @@ for (let i = 0; i < operatorBtns.length; i++) {
 
             displayNum.innerHTML = stringTotal1;
 
-            operateBool = false;
-
-            return;
         }
-
-        var target = e.target;
 
 
         operator = target.innerHTML;
 
+        if (operator == "=") {
+            operateBool == false
+            operate("+", stringTotal1, 0);
+            return
+        }
+
+
         operateBool = true;
 
-        // operate(operatorSign, Number(stringTotal),)
 
     });
 
 
 }
-
-
-
-
-
-
-
 
 
 
@@ -139,6 +134,12 @@ function divide(num1, num2) {
 
 function operate(operator, num1, num2) {
 
+    if (operator == "=") {
+        if (stringTotal2 == "") {
+            operate("+", stringTotal1, 0);
+        }
+        return stringTotal1;
+    }
     if (operator == "+") {
         return add(num1, num2);
     }
